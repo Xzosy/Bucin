@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebuah Pengakuan Untukmu... 💌</title>
+    <!-- Impor Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Tautan ke file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="book-container">
+        <div class="book" id="theBook">
+
+            <!-- Halaman Konten (Dalam) -->
+            <div class="content-page">
+                 <button class="close-book-btn" id="closeBookBtn" title="Tutup Surat">×</button>
+                 <!-- === Konten Nembak === -->
+                 <h1>Untuk ntii, ✨</h1>
+                 <p>
+                    Ntii.. aku udah lama banget pengen ngomong ini, tapi rasanya susah banget cari waktu dan keberanian yang pas. Setiap bareng kamu, atau bahkan cuma mikirin kamu, ada perasaan beda yang muncul. 😊
+                 </p>
+                 <p>
+                    Senyummu, semuanya bikin aku... yah, suka sama kamu. Lebih dari sekadar teman.
+                 </p>
+                 <p class="question">
+                    Jadi... mau nggak kamu coba jalanin hubungan yang lebih serius sama aku?
+                 </p>
+
+                 <!-- Tombol Aksi -->
+                 <div class="action-buttons">
+                    <a href="https://wa.me/6281292711174?text=atos aku terima sayang"
+                       target="_blank" class="action-btn accept" id="acceptBtn">
+                       Mau Banget! (Terima)
+                    </a>
+                    <!--
+                        !!! PENTING !!!
+                        Ganti 6281234567890 dengan NOMOR WA KAMU (diawali kode negara, tanpa +/spasi/strip).
+                        Ganti teks setelah ?text= sesuai keinginanmu. Spasi jadi %20, emoji bisa langsung.
+                    -->
+                    <button class="action-btn reject" id="rejectBtn">
+                        Hmm, Maaf ya (Tolak)
+                    </button>
+                 </div>
+                 <!-- === Akhir Konten Nembak === -->
+            </div>
+
+            <!-- Cover Depan Buku/Surat -->
+            <div class="cover" id="bookCover">
+                 <div class="cover-front">
+                    <h2>halo ntii</h2>
+                    <p>buka surat ini<br>pemberian dari zos</p>
+                    <span class="open-instruction">(Klik untuk Buka)</span>
+                 </div>
+                 <div class="cover-back"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="backgroundMusic" src="https://d.top4top.io/m_33813e7an1.mp3" loop>
+        Browser kamu tidak mendukung elemen audio.
+    </audio>
+
+    <!-- Tautan ke file JavaScript Eksternal -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>
