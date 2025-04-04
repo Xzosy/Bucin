@@ -1,0 +1,118 @@
+/* style.css */
+
+/* ... (Reset, body, book-container, book, content-page, cover, cover-front, cover-back - TETAP SAMA) ... */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; overflow: hidden; perspective: 1500px; background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('aesthetic_bg.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; }
+.book-container { perspective: 1500px; }
+.book { width: 350px; height: 500px; position: relative; transform-style: preserve-3d; transition: transform 1.2s ease-in-out; cursor: pointer; }
+.content-page { position: absolute; top: 5px; left: 5px; width: calc(100% - 10px); height: calc(100% - 10px); background-color: #fffef5; z-index: 1; padding: 30px 40px 80px 40px; /* Tambah padding bawah untuk ruang tombol */ overflow-y: auto; border-radius: 3px; box-shadow: inset 0 0 15px rgba(0,0,0,0.15); opacity: 0; transform: translateX(10px) translateZ(-5px); transition: opacity 0.5s ease-out 0.5s, transform 0.5s ease-out 0.5s; pointer-events: none; }
+.cover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #ecd9f2; transform-origin: left center; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); z-index: 10; border-radius: 5px; box-shadow: 5px 5px 15px rgba(0,0,0,0.3); }
+.cover-front { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; color: #333; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; text-align: center; border-radius: 5px; background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('floral_cover.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat; }
+.cover-front h2 { font-family: 'Dancing Script', cursive; font-size: 2.8em; margin-bottom: 15px; color: #5d4037; text-shadow: 1px 1px 2px rgba(255,255,255,0.5); }
+.cover-front p { font-size: 1.1em; line-height: 1.5; margin-bottom: 30px; color: #795548; font-weight: 600; }
+.cover-front .open-instruction { font-size: 0.8em; color: #a1887f; margin-top: auto; background-color: rgba(255, 255, 255, 0.7); padding: 3px 8px; border-radius: 10px; }
+.cover-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background-color: #f3e5f5; transform: rotateY(180deg); border-radius: 5px; }
+.book.open .cover { transform: rotateY(-165deg); box-shadow: -10px 5px 20px rgba(0,0,0,0.4); cursor: default; }
+.book.open .content-page { opacity: 1; transform: translateX(0) translateZ(0); transition-delay: 0.3s; pointer-events: auto; z-index: 5; }
+.close-book-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); color: #555; border: none; border-radius: 50%; width: 35px; height: 35px; font-size: 1.5em; font-weight: bold; line-height: 33px; text-align: center; cursor: pointer; transition: background-color 0.3s, color 0.3s, transform 0.3s; z-index: 20; }
+.close-book-btn:hover { background-color: rgba(0,0,0,0.2); color: #000; transform: rotate(90deg); }
+
+/* --- Styling Konten Nembak di Dalam --- */
+.content-page h1 { /* Sama seperti sebelumnya */
+    font-family: 'Dancing Script', cursive;
+    color: #c0392b;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.content-page p { /* Sama seperti sebelumnya */
+    color: #34495e;
+    font-size: 1.05em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify; /* Ratakan teks paragraf */
+}
+.content-page .question { /* Styling untuk paragraf pertanyaan */
+    font-weight: 600;
+    color: #e74c3c;
+    text-align: center;
+    font-size: 1.15em;
+    margin-top: 30px;
+    margin-bottom: 40px; /* Beri jarak ke tombol */
+}
+.content-page .signature { /* Dihapus, ganti tombol */ }
+.content-page .heart { /* Sama seperti sebelumnya */
+     color: #e74c3c; font-size: 1em; display: inline-block; animation: pulseHeart 1.2s infinite alternate ease-in-out; margin-left: 5px;
+}
+@keyframes pulseHeart { from { transform: scale(1); } to { transform: scale(1.3); } }
+
+/* --- Styling Tombol Aksi --- */
+.action-buttons {
+    display: flex;
+    justify-content: space-around; /* Beri jarak antar tombol */
+    align-items: center; /* Sejajarkan tombol */
+    margin-top: 30px;
+    padding: 0 10px; /* Sedikit padding horizontal */
+    position: relative; /* Agar tombol tolak bisa diposisikan absolut relatif ke sini */
+    min-height: 60px; /* Beri ruang untuk tombol tolak bergerak */
+}
+
+.action-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px; /* Tombol agak bulat */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    text-decoration: none; /* Untuk link <a> */
+    display: inline-block; /* Untuk link <a> */
+    text-align: center;
+    min-width: 120px; /* Lebar minimal tombol */
+}
+
+.action-btn.accept {
+    background-color: #4CAF50; /* Hijau */
+    color: white;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+}
+.action-btn.accept:hover {
+    background-color: #66bb6a; /* Hijau lebih terang */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.5);
+}
+
+.action-btn.reject {
+    background-color: #f44336; /* Merah */
+    color: white;
+    box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+    /* === KUNCI UNTUK GERAKAN === */
+    position: relative; /* Diubah ke relative agar bisa digeser top/left */
+    top: 0;
+    left: 0;
+    transition: top 0.2s linear, left 0.2s linear, background-color 0.3s, transform 0.2s; /* Transisi untuk gerakan */
+}
+.action-btn.reject:hover {
+    background-color: #ef5350; /* Merah lebih terang */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(244, 67, 54, 0.5);
+     /* Kita tidak handle hover langsung untuk gerak, tapi pakai JS */
+}
+
+
+/* --- Media Queries --- */
+/* ... (Media queries tetap sama, cek jika tombol butuh penyesuaian) ... */
+@media (max-width: 480px) {
+    .book { width: 300px; height: 450px; }
+    .content-page { padding: 25px 30px 70px 30px; } /* Padding bawah lebih besar */
+    .content-page h1 { font-size: 2em; }
+    .content-page p { font-size: 0.95em; }
+    .content-page .question { font-size: 1.05em; margin-bottom: 30px;}
+    .cover-front h2 { font-size: 2.2em; }
+    .cover-front p { font-size: 1em; }
+    .close-book-btn { width: 30px; height: 30px; font-size: 1.3em; line-height: 28px; top: 10px; right: 10px;}
+    .action-buttons { flex-direction: column; /* Tumpuk tombol di layar kecil */ gap: 15px; }
+    .action-btn { min-width: 150px; }
+    /* Atur ulang posisi tombol tolak di mobile jika tumpuk */
+    .action-btn.reject { position: relative; /* Tetap relative */ }
+}
